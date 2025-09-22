@@ -12,3 +12,4 @@ app.use("/api/v1/todo",TodoRouter)
 export default app;
 
 // for creating todo -:  http://localhost:9090/api/v1/todo/createTodo
+// for fetching todos -:  http://localhost:9090/api/v1/todo/getTodos
