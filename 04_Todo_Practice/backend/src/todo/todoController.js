@@ -91,15 +91,15 @@ export const updateTodo = async (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
   try {
-     console.log(title,description);
+     // console.log(title,description);
     let updateTodoOjb = {};
-    if (title !== undefined) updateTodoOjb.title = title;
-    if (description !== undefined) updateTodoOjb.description = description;
+    if (title) updateTodoOjb.title = title;
+    if (description) updateTodoOjb.description = description;
 
-    console.log(updateTodoOjb);
-    const updatedTodo = await PraGoTodoModel.findByIdAndUpdate(id, updateTodoOjb);
+//     console.log(updateTodoOjb);
+    const updatedTodo = await PraGoTodoModel.findByIdAndUpdate(id, updateTodoOjb,{new:true});
 
-    if (!updateTodo) {
+    if (!updatedTodo) {
       return res.status(401).json({
         success: false,
         message: "Failed to update todo",
