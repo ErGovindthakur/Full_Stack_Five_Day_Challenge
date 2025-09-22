@@ -118,3 +118,35 @@ export const updateTodo = async (req, res) => {
     });
   }
 };
+
+// 5. deleteTodo endpoint
+export const deleteTodo = async(req,res) => {
+     const {id} = req.params;
+     try {
+          if(!id){
+               return res.status(404).json({
+                    success:false,
+                    message:"Todo id not found"
+               })
+          }
+
+          const deletedTodo = await PraGoTodoModel.findByIdAndDelete(id);
+
+          if(!deletedTodo){
+                return res.status(404).json({
+                    success:false,
+                    message:"Failed to delete Todo"
+               })
+          }
+
+          return res.status(200).json({
+               success:true,
+               message:"todo Deleted Successfully..."
+          })
+     } catch (err) {
+           return res.status(500).json({
+               success:false,
+               message:`Failed to delete todo -: ${err.message}`
+          })
+     }
+}

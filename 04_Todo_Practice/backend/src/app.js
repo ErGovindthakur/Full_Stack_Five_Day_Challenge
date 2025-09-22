@@ -15,3 +15,4 @@ export default app;
 // for fetching all todos -:  http://localhost:9090/api/v1/todo/getTodos
 // for fetching single todo by id -:  http://localhost:9090/api/v1/todo/getTodo/todoid
 // for updating todo by id -:  http://localhost:9090/api/v1/todo/updateTodo/todoid
+// for deleting todo by id -:  http://localhost:9090/api/v1/todo/deleteTodo/todoid
