@@ -14,3 +14,4 @@ export default app;
 // for creating todo -:  http://localhost:9090/api/v1/todo/createTodo
 // for fetching all todos -:  http://localhost:9090/api/v1/todo/getTodos
 // for fetching single todo by id -:  http://localhost:9090/api/v1/todo/getTodo/todoid
+// for updating todo by id -:  http://localhost:9090/api/v1/todo/updateTodo/todoid
