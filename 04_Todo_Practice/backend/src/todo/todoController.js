@@ -32,9 +32,9 @@ export const createTodo = async(req,res)=>{
      }
 }
 
-// 2. GetTodo endpoint
+// 2. GetTodos endpoint
 
-export const getTodo = async(req,res) => {
+export const getTodos = async(req,res) => {
      try {
           const todos = await PraGoTodoModel.find();
 
@@ -53,7 +53,34 @@ export const getTodo = async(req,res) => {
      } catch (err) {
           return res.status(500).json({
                success:false,
-               message:`Failed to create todo -: ${err.message}`
+               message:`Failed to get todo -: ${err.message}`
+          })
+     }
+}
+
+// 3. GetTodo by id endpoint
+
+export const getTodo = async(req,res) => {
+     const {id} = req.params;
+     try {
+          const todo = await PraGoTodoModel.findById(id);
+
+          if(!todo){
+                return res.status(404).json({
+                    success:false,
+                    message:"Todo not found by id..."
+               })
+          }
+
+          return res.status(200).json({
+               success:true,
+               message:"Here is your todo...",
+               todo
+          })
+     } catch (err) {
+           return res.status(500).json({
+               success:false,
+               message:`Failed to get todo by id -: ${err.message}`
           })
      }
 }
