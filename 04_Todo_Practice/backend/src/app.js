@@ -1,5 +1,6 @@
 // writing main server file
 import express from "express"
+import cors from "cors"
 import { TodoRouter } from "./todo/todoRoute.js";
 
 const app = express();
@@ -7,6 +8,10 @@ const app = express();
 // Applying middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors({
+     origin:"http://localhost:5173",
+     Credential:true
+}))
 
 app.use("/api/v1/todo",TodoRouter)
 export default app;

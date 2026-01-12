@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import { getTodos } from "./api.js";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [todos, setTodos] = useState([]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+  const getAllTodos = async () => {
+    try {
+      const { data } = await getTodos;
+      setTodos(data.todos);
+      console.log(data.todos);
+    } catch (error) {
+      console.log("Error while fetching Todos -> ", error.message);
+    }
+  };
 
-export default App
+  useEffect(() => {
+    getAllTodos();
+  }, []);
+  console.log(`Todos -> ${todos}`);
+
+  return !todos ? (
+    <h3>Todo is Loading...</h3>
+  ) : (
+    <div className="w-full h-screen bg-zinc-900 text-white flex gap-5 ">
+      {/* Apple */}
+      {todos.map((data) => {
+        return (
+          <div key={data._id}>
+            <div className="w-[360px] h-[160px] pt-2 pb-5 px-2 m-2 bg-gray-700 ">
+              <p>Title -: {data?.title}</p>
+              <p>Description -: {data?.description}</p>
+              <div className="py-2 flex gap-x-3">
+                <button className="bg-green-600 rounded-md px-3 py-2 cursor-pointer">
+                  Update
+                </button>
+                <button className="bg-red-600 rounded-md px-3 py-2 cursor-pointer">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default App;
