@@ -9,9 +9,10 @@ const CounterApp = () => {
   const updateCounter = (value) => {
     setCounter((prev) => {
       let next = prev + value;
-      if (next > MAX || next < MIN) return prev;
-      console.log(`Prev ${prev}, Next ${next}`);
-      return next;
+     //  if (next > MAX || next < MIN) return prev;
+     return next > MAX ? MAX : next < MIN ? MIN : next
+     //  console.log(`Prev ${prev}, Next ${next}`);
+     //  return next;
     });
   };
 
