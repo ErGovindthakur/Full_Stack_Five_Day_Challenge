@@ -28,6 +28,12 @@ const App = () => {
         name="Vijay"
         role="Tester Automation"
         isOnline={false}
+        // sendMsg={sendMsg}
+      />
+      <UserCard
+        name="Sanjay"
+        role="AI and ML"
+        isOnline={false}
         sendMsg={sendMsg}
       />
     </div>
