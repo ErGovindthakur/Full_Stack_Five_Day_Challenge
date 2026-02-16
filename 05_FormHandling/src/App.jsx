@@ -1,4 +1,5 @@
 import FormHandling from "./FormHandling";
+import FormHandling2 from "./FormHandling2";
 
 const App = () => {
   // const [formData, setFormData] = useState({
@@ -84,7 +85,8 @@ const App = () => {
   // );
   return(
     <>
-      <FormHandling />
+      {/* <FormHandling /> */}
+      <FormHandling2 />
     </>
   );
 };
