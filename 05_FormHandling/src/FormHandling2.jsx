@@ -77,7 +77,7 @@ const FormHandling2 = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value.trim(),
     }));
-
+    // Explain why this one
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
@@ -93,6 +93,7 @@ const FormHandling2 = () => {
       newErrors.termsAndConditions = "You must accept terms";
 
     setErrors(newErrors);
+    // this is the actual stuff which prevent us while submitting form
     return Object.keys(newErrors).length === 0;
   };
 
