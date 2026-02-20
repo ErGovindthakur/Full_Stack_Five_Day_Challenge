@@ -77,7 +77,7 @@ const FormHandling2 = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value.trim(),
     }));
-    // Explain why this one
+    // Explain why this one => important for immediately show error and while entering input hide errors
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
