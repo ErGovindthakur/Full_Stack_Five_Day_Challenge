@@ -1,3 +1,4 @@
+import UserForm from "./components/UserForm"
 import Users from "./pages/Users"
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
     {/* <p className="text-center">User Data</p>
     <FetchUser /> */}
     <Users />
+    {/* <UserForm /> */}
     </div>
   )
 }
