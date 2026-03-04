@@ -2,8 +2,7 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div className='w-full'>
-
+    <div className='w-full bg-gray-100'>
     </div>
   )
 }

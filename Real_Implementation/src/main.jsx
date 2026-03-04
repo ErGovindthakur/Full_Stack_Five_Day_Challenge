@@ -1,4 +1,4 @@
-import { lazy, StrictMode } from "react";
+import { lazy, StrictMode, Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -23,15 +23,16 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />} errorElement={RouteErrorPage}>
       <Route index element={ <SignUp />} />
       <Route path="login" element={<Login />} />
-      <Route path="products" element={<Products />} />
+      <Route path="products" element={<Suspense fallback={<p>Data is Loading...</p>}>
+      <Products />
+      </Suspense>} />
       <Route path="product/:productId" element={<SingleProduct />} />
     </Route>,
   ),
 );
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>
+    <RouterProvider router={router} />
       <App />
-    </RouterProvider>
   </StrictMode>,
 );
