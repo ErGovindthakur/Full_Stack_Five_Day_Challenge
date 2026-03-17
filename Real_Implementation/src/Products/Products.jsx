@@ -24,7 +24,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    loading || products.length===0 ? <ProductSkeleton /> :<div className="max-w-7xl py-12 mx-auto p-6">
 
       <h1 className="text-3xl font-bold mb-8 text-center">
         Products
@@ -32,11 +32,7 @@ const Products = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        {loading
-          ? Array(8)
-              .fill(null)
-              .map((_, index) => <ProductSkeleton key={index} />)
-          : products.map((product) => (
+        {products.map((product) => (
               <Link key={product.id} to={`/product/${product.id}`}>
                 <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-xl transition">
 
